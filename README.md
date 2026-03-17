@@ -50,7 +50,6 @@ port = 60000
 s.connect((host, port))
 print("Connected to server.")
 
-# Optional greeting
 s.send("Hello server!".encode())
 
 with open('received_file', 'wb') as f:
