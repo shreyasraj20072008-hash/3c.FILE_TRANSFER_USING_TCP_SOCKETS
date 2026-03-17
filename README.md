@@ -40,7 +40,6 @@ while True:
     print('Connection closed.\n')
 
 ~~~
-
 Client.py
 import socket
 
@@ -65,7 +64,6 @@ with open('received_file', 'wb') as f:
 print('Successfully received the file.')
 s.close()
 print('Connection closed.')
-
 ~~~
 ## OUPUT
 server.py
