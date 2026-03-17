@@ -46,6 +46,7 @@ with open('mytext.txt', 'wb') as f:
     print('receiving data...')
     data = s.recv(1024)
     print('data=%s', (data))
+<img width="1260" height="
     if not data:
         break
     f.write(data)
@@ -55,8 +56,7 @@ s.close()
 print('connection closed')
 ~~~
 ## OUPUT
-server.py and client.py
-<img width="1260" height="238" alt="image" src="https://github.com/user-attachments/assets/816859de-74b6-491a-bbd4-3715810dbbc1" />
+server.py and client.py238" alt="image" src="https://github.com/user-attachments/assets/816859de-74b6-491a-bbd4-3715810dbbc1" />
 
 ## RESULT
 Thus, the python program for creating File Transfer using TCP Sockets Links was 
