@@ -10,53 +10,70 @@ To write a python program for creating File Transfer using TCP Sockets Links
 ## PROGRAM
 ~~~
 server.py
-
 import socket
+
 port = 60000
 s = socket.socket()
 host = socket.gethostname()
+
 s.bind((host, port))
 s.listen(5)
+print("Server is listening...")
+
 while True:
     conn, addr = s.accept()
+    print('Got connection from', addr)
+
     data = conn.recv(1024)
-    print('Server received', repr(data))
-    filename='mytext.txt'
-    f = open(filename,'rb')
-    l = f.read(1024)
-    while (l):
-        conn.send(l)
-        print('Sent ',repr(l))
+    print('Server received:', repr(data))
+
+    filename = 'mytext.txt'
+    with open(filename, 'rb') as f:
         l = f.read(1024)
-    f.close()
-    print('Done sending')
-    conn.send('Thank you for connecting'.encode())
+        while l:
+            conn.send(l)
+            print('Sent', repr(l))
+            l = f.read(1024)
+
+    print('Done sending.')
     conn.close()
+    print('Connection closed.\n')
+
 ~~~
 
 Client.py
 import socket
+
 s = socket.socket()
-host = socket.gethostname()
+host = socket.gethostname()  # or use server IP if on different system
 port = 60000
+
 s.connect((host, port))
+print("Connected to server.")
+
+# Optional greeting
 s.send("Hello server!".encode())
-with open('mytext.txt', 'wb') as f:
- while True:
-    print('receiving data...')
-    data = s.recv(1024)
-    print('data=%s', (data))
-<img width="1260" height="
-    if not data:
-        break
-    f.write(data)
-f.close()
-print('Successfully get the file')
+
+with open('received_file', 'wb') as f:
+    while True:
+        print('Receiving data...')
+        data = s.recv(1024)
+        if not data:
+            break
+        f.write(data)
+
+print('Successfully received the file.')
 s.close()
-print('connection closed')
+print('Connection closed.')
+
 ~~~
 ## OUPUT
-server.py and client.py238" alt="image" src="https://github.com/user-attachments/assets/816859de-74b6-491a-bbd4-3715810dbbc1" />
+server.py
+<img width="953" height="296" alt="image" src="https://github.com/user-attachments/assets/4d10bc5e-5fb8-4650-a0e7-a4cff772e7db" />
+client.py
+
+<img width="937" height="342" alt="image" src="https://github.com/user-attachments/assets/908ed522-ad20-4eed-892b-b59b235040d9" />
+
 
 ## RESULT
 Thus, the python program for creating File Transfer using TCP Sockets Links was 
