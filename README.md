@@ -10,7 +10,7 @@ To write a python program for creating File Transfer using TCP Sockets Links
 ## PROGRAM
 ~~~
 server.py
-Server.py
+
 import socket
 port = 60000
 s = socket.socket()
@@ -33,7 +33,7 @@ while True:
     conn.send('Thank you for connecting'.encode())
     conn.close()
 ~~~
-client.py
+
 Client.py
 import socket
 s = socket.socket()
